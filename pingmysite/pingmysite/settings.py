@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTOMATED_GET_REQUEST_INTERVAL = 10
+
 
 # Application definition
 

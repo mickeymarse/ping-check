@@ -44,9 +44,14 @@
         <br />
         <input type="submit" value="Submit" />
       </form>
-      {% if data %}
-      <h3>{{data.heading}}</h3>
-      <h3>{{data.status}}</h3>
+      {% if data_list %} {% for data in data_list %}
+      <div>
+        <h3>Site: {{ data.site }}</h3>
+        <p>Status: {{ data.status }}</p>
+        <p>Heading: {{ data.heading }}</p>
+      </div>
+      {% endfor %} {% else %}
+      <p>No data available.</p>
       {% endif %}
     </main>
   </body>
