@@ -53,9 +53,9 @@ def automated_get_request():
         status = r.status_code
         soup = BeautifulSoup(html_content, 'html.parser')
         data = dict()
-        data['site'] = site
+        data['title'] = soup.find('title').text if soup.find('title') else None
         data['status'] = status
-        data['heading'] = soup.find('p').text
+        data['element'] = soup.find('p').text if soup.find('p') else None
         data_list.append(data)
         print(data_list)
 

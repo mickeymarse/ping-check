@@ -11,6 +11,10 @@
           Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         box-sizing: border-box;
       }
+      body {
+        background-color: darkslategrey;
+        color: blanchedalmond;
+      }
       main {
         text-align: center;
         padding-top: 100px;
@@ -33,26 +37,47 @@
         cursor: pointer;
         text-transform: uppercase;
       }
+      table {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5rem;
+      }
     </style>
   </head>
   <body>
     <main>
       <h1>Ping This Site</h1>
-      <form method="GET">
-        <label for="site"></label>
-        <input type="text" name="site" id="site" placeholder="site..." />
-        <br />
-        <input type="submit" value="Submit" />
-      </form>
-      {% if data_list %} {% for data in data_list %}
-      <div>
-        <h3>Site: {{ data.site }}</h3>
-        <p>Status: {{ data.status }}</p>
-        <p>Heading: {{ data.heading }}</p>
-      </div>
-      {% endfor %} {% else %}
-      <p>No data available.</p>
-      {% endif %}
+      <table>
+        <tr>
+          <th>Project</th>
+          <th>Tech</th>
+          <th>Deployment</th>
+          <th>Status</th>
+          <th>Touch Point</th>
+        </tr>
+        {% if data_list %} {% for data in data_list %}
+        <tr>
+          <td>{{ data.title }}</td>
+          <td>Bun + Elysia</td>
+          <td>Fly</td>
+          {% if data.status == 200 %}
+          <td style="background-color: green; font-weight: bold">OK</td>
+          {% elif data.status %}
+          <td style="background-color: red; font-weight: bold">Error</td>
+          {% else %}
+          <td style="background-color: gray; font-weight: bold">Missing</td>
+          {% endif %} {% if data.element %}
+          <td style="background-color: green; font-weight: bold">OK</td>
+          {% else %}
+          <td style="background-color: red; font-weight: bold">Error</td>
+          {% endif %}
+        </tr>
+        {% endfor %} {% else %}
+        <tr>
+          <td colspan="5">No data available.</td>
+        </tr>
+        {% endif %}
+      </table>
     </main>
   </body>
 </html>
