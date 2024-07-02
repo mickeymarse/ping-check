@@ -58,9 +58,17 @@
         {% if data_list %} {% for data in data_list %}
         <tr>
           <td>{{ data.title }}</td>
+          {% if data.id == 1 %}
           <td>Bun + Elysia</td>
+          {% elif data.id == 2 %}
+          <td>Ruby on Rails</td>
+          {% else %}
+          <td>Astro</td>
+          {% endif %} {% if data.id == 3 %}
+          <td>Vercel</td>
+          {% else %}
           <td>Fly</td>
-          {% if data.status == 200 %}
+          {% endif %} {% if data.status == 200 %}
           <td style="background-color: green; font-weight: bold">OK</td>
           {% elif data.status %}
           <td style="background-color: red; font-weight: bold">Error</td>

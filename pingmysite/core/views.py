@@ -42,6 +42,7 @@ def automated_get_request():
     LANGUAGE = "en-US,en;q=0.5"
     sites = ['https://tarmarapi.fly.dev/', 'https://metrak.fly.dev/', 'https://mickeymarse.dev/']
     data_list = []
+    id = 0
 
     for site in sites:
         session = requests.Session()
@@ -53,6 +54,8 @@ def automated_get_request():
         status = r.status_code
         soup = BeautifulSoup(html_content, 'html.parser')
         data = dict()
+        id += 1
+        data['id'] = id
         data['title'] = soup.find('title').text if soup.find('title') else None
         data['status'] = status
         data['element'] = soup.find('p').text if soup.find('p') else None
@@ -72,6 +75,4 @@ def start_automated_get_request():
         automated_get_request()
         time.sleep(interval)
 
-# Start the automated GET request in a separate thread
 threading.Thread(target=start_automated_get_request, daemon=True).start()
-
