@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ping My Site</title>
+    <title>Ping Check</title>
     <style>
       * {
         margin: 0;
@@ -19,41 +19,35 @@
         text-align: center;
         padding-top: 100px;
       }
-      input[type='text'] {
-        width: 30%;
-        padding: 2px;
-        padding: 10px;
-        border: 2px solid black;
-        margin-bottom: 5px;
-        margin-top: 20px;
-      }
-      input[type='submit'] {
-        width: 30%;
-        padding: 2px;
-        padding: 10px;
-        border: 2px solid black;
-        background-color: black;
-        color: aliceblue;
-        cursor: pointer;
-        text-transform: uppercase;
-      }
       table {
         margin-left: auto;
         margin-right: auto;
         margin-top: 5rem;
+        border: 2px double goldenrod;
+        border-radius: 10px;
+        border-collapse: collapse;
+        width: 80%;
+        height: 25rem;
+      }
+      table tr th {
+        font-size: larger;
+        font-weight: bolder;
+      }
+      table td {
+        border: 1px solid goldenrod;
       }
     </style>
   </head>
   <body>
     <main>
-      <h1>Ping This Site</h1>
+      <h1>Ping Check</h1>
       <table>
         <tr>
-          <th>Project</th>
-          <th>Tech</th>
-          <th>Deployment</th>
-          <th>Status</th>
-          <th>Touch Point</th>
+          <th>PROJECT</th>
+          <th>TECH</th>
+          <th>DEPLOYMENT</th>
+          <th>STATUS</th>
+          <th>TOUCH POINT</th>
         </tr>
         {% if data_list %} {% for data in data_list %}
         <tr>
@@ -62,9 +56,11 @@
           <td>Bun + Elysia</td>
           {% elif data.id == 2 %}
           <td>Ruby on Rails</td>
+          {% elif data.id == 4 %}
+          <td>Next.js</td>
           {% else %}
           <td>Astro</td>
-          {% endif %} {% if data.id == 3 %}
+          {% endif %} {% if data.id >= 3 %}
           <td>Vercel</td>
           {% else %}
           <td>Fly</td>
@@ -73,11 +69,11 @@
           {% elif data.status %}
           <td style="background-color: red; font-weight: bold">Error</td>
           {% else %}
-          <td style="background-color: gray; font-weight: bold">Missing</td>
+          <td style="background-color: gray; font-weight: bold">???</td>
           {% endif %} {% if data.element %}
-          <td style="background-color: green; font-weight: bold">OK</td>
+          <td style="background-color: green; font-weight: bold">Touched</td>
           {% else %}
-          <td style="background-color: red; font-weight: bold">Error</td>
+          <td style="background-color: red; font-weight: bold">Missed</td>
           {% endif %}
         </tr>
         {% endfor %} {% else %}

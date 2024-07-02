@@ -40,7 +40,7 @@ import time
 def automated_get_request():
     USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36"
     LANGUAGE = "en-US,en;q=0.5"
-    sites = ['https://tarmarapi.fly.dev/', 'https://metrak.fly.dev/', 'https://mickeymarse.dev/']
+    sites = ['https://tarmarapi.fly.dev/', 'https://metrak.fly.dev/', 'https://mickeymarse.dev/', 'https://21-sid-website.vercel.app/']
     data_list = []
     id = 0
 
@@ -58,7 +58,7 @@ def automated_get_request():
         data['id'] = id
         data['title'] = soup.find('title').text if soup.find('title') else None
         data['status'] = status
-        data['element'] = soup.find('p').text if soup.find('p') else None
+        data['element'] = soup.find('h1').text if soup.find('h1') else soup.find('p').text
         data_list.append(data)
         print(data_list)
 
