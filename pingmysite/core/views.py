@@ -70,7 +70,7 @@ def home(request):
 
 
 def start_automated_get_request():
-    interval = getattr(settings, 'AUTOMATED_GET_REQUEST_INTERVAL', 10)
+    interval = getattr(settings, 'AUTOMATED_GET_REQUEST_INTERVAL', 900)
     while True:
         automated_get_request()
         time.sleep(interval)
