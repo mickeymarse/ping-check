@@ -14,7 +14,7 @@ APP_NAME = os.environ.get("FLY_APP_NAME")
 ALLOWED_HOSTS = [f"{APP_NAME}.fly.dev", "127.0.0.1", "localhost"]
 CSRF_TRUSTED_ORIGINS = [f"https://{APP_NAME}.fly.dev"]
 
-AUTOMATED_GET_REQUEST_INTERVAL = 900
+AUTOMATED_GET_REQUEST_INTERVAL = 300
 
 # Application definition
 

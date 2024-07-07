@@ -22,7 +22,8 @@
       table {
         margin-left: auto;
         margin-right: auto;
-        margin-top: 5rem;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
         border: 2px double goldenrod;
         border-radius: 10px;
         border-collapse: collapse;
@@ -35,6 +36,27 @@
       }
       table td {
         border: 1px solid goldenrod;
+      }
+      table td a {
+        text-decoration: underline;
+        color: inherit;
+      }
+      table td a:hover {
+        background-color: goldenrod;
+        border-radius: 2px;
+        color: black;
+      }
+      footer {
+        background-color: darkgoldenrod;
+        text-align: center;
+        font-size: larger;
+        width: fit-content;
+        margin: auto;
+        padding: 0.5rem;
+        border-radius: 5px;
+      }
+      footer a {
+        text-decoration: none;
       }
     </style>
   </head>
@@ -51,27 +73,41 @@
         </tr>
         {% if data_list %} {% for data in data_list %}
         <tr>
-          <td>{{ data.title }}</td>
-          {% if data.id == 1 %}
+          <td>
+            <a href="{{ data.site }}" target="_blank">
+              {% if data.id == 'ta' %}
+              TarMarAPI
+              {% elif data.id == 'me' %}
+              Metrak API
+              {% elif data.id == '21' %}
+              21 Sid website
+              {% else %}
+              Mickey's Blogfolio
+              {% endif %}
+            </a>
+          </td>
+          {% if data.id == 'ta' %}
           <td>Bun + Elysia</td>
-          {% elif data.id == 2 %}
+          {% elif data.id == 'me' %}
           <td>Ruby on Rails</td>
-          {% elif data.id == 4 %}
+          {% elif data.id == '21' %}
           <td>Next.js</td>
           {% else %}
           <td>Astro</td>
-          {% endif %} {% if data.id >= 3 %}
+          {% endif %} {% if data.id == '21' or data.id == 'mi' %}
           <td>Vercel</td>
           {% else %}
           <td>Fly</td>
           {% endif %} {% if data.status == 200 %}
           <td style="background-color: green; font-weight: bold">OK</td>
-          {% elif data.status %}
+          {% elif data.status != 200 and data.status > 0 %}
           <td style="background-color: red; font-weight: bold">Error</td>
           {% else %}
           <td style="background-color: gray; font-weight: bold">???</td>
-          {% endif %} {% if data.element %}
+          {% endif %} {% if data.element and data.title %}
           <td style="background-color: green; font-weight: bold">Touched</td>
+          {% elif data.element or data.title %}
+          <td style="background-color: gray; font-weight: bold">Not All Touched</td>
           {% else %}
           <td style="background-color: red; font-weight: bold">Missed</td>
           {% endif %}
@@ -83,5 +119,9 @@
         {% endif %}
       </table>
     </main>
+    <footer>
+      Created with <a href="https://www.mickeymarse.dev/" target="_blank">🕵️</a> and
+      <a href="https://www.djangoproject.com/" target="_blank">🤠</a>
+    </footer>
   </body>
 </html>
