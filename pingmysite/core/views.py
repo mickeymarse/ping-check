@@ -57,7 +57,7 @@ def home(request):
         return render(request, 'error_template.html', {'error_message': error_message})
 
 def start_automated_get_request():
-    interval = getattr(settings, 'AUTOMATED_GET_REQUEST_INTERVAL', 300)
+    interval = getattr(settings, 'AUTOMATED_GET_REQUEST_INTERVAL', 3600)
     while True:
         automated_get_request()
         time.sleep(interval)
